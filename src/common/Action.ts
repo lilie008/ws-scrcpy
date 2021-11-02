@@ -11,4 +11,5 @@ export enum ACTION {
     STREAM_WS_QVH = 'stream-qvh',
     PROXY_WDA = 'proxy-wda',
     FILE_LISTING = 'list-files',
+    SHOW_LOG = 'show-log',
 }

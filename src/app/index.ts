@@ -37,6 +37,9 @@ window.onload = async function (): Promise<void> {
 
     if (action === StreamClientScrcpy.ACTION && typeof parsedQuery.udid === 'string') {
         StreamClientScrcpy.start(parsedQuery);
+
+        const { LogClient } = await import('./googDevice/client/LogClient');
+        LogClient.startLog(parsedQuery);
         return;
     }
     if (action === StreamClientQVHack.ACTION && typeof parsedQuery.udid === 'string') {

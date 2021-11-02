@@ -40,6 +40,11 @@ export class ExtendedSync {
         return this._readData(stream);
     }
 
+    public pipeLog(stream: Multiplexer): Promise<void> {
+        this._sendCommandWithArg(Protocol.LOGS, ``);
+        return this._readData(stream);
+    }
+
     public async pipeStat(path: string, stream: Multiplexer): Promise<void> {
         this._sendCommandWithArg(Protocol.STAT, `${path}`);
         const reply = await this.parser.readAscii(4);

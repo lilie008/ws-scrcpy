@@ -27,6 +27,8 @@ import { WithToString } from '../WithToString';
 import Tracker from './tracker';
 import JdwpTracker from './jdwptracker';
 import { DeviceWithPath } from '../DeviceWithPath';
+import LogTransfer from "@devicefarmer/adbkit/lib/adb/sync/logtransfer";
+import {Multiplexer} from "../../../../../src/packages/multiplexer/Multiplexer";
 declare class Client extends EventEmitter {
     readonly options: ClientOptions;
     readonly port: number | string;
@@ -79,6 +81,8 @@ declare class Client extends EventEmitter {
     stat(serial: string, path: string, callback?: Callback<Stats>): Bluebird<Stats>;
     readdir(serial: string, path: string, callback?: Callback<Entry[]>): Bluebird<Entry[]>;
     pull(serial: string, path: string, callback?: Callback<PullTransfer>): Bluebird<PullTransfer>;
+
+    log(serial: string, callback?: Multiplexer): Bluebird<LogTransfer>;
     push(serial: string, contents: string | ReadStream, path: string, mode?: number | typeof callback, callback?: Callback<PushTransfer>): Bluebird<PushTransfer>;
     tcpip(serial: string, port?: number | typeof callback, callback?: Callback<number>): Bluebird<number>;
     usb(serial: string, callback?: Callback<boolean>): Bluebird<boolean>;

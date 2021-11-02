@@ -10,6 +10,7 @@ declare class Protocol {
     static DONE: string;
     static SEND: string;
     static QUIT: string;
+    static LOGS: string;
     static decodeLength(length: string): number;
     static encodeLength(length: number): string;
     static encodeData(data: Buffer | string): Buffer;

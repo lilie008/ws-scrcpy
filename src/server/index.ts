@@ -53,6 +53,11 @@ async function loadGoogModules() {
     mw2List.push(FileListing);
     /// #endif
 
+    /// #if LOG
+    const { PrintLog } = await import('./goog-device/mw/PrintLog');
+    mw2List.push(PrintLog);
+    /// #endif
+
     mwList.push(WebsocketProxyOverAdb);
 }
 loadPlatformModulesPromises.push(loadGoogModules());

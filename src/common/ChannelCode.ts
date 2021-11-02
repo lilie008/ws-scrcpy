@@ -4,4 +4,5 @@ export enum ChannelCode {
     SHEL = 'SHEL',
     GTRC = 'GTRC',
     ATRC = 'ATRC',
+    LOGS = 'LOGS',
 }

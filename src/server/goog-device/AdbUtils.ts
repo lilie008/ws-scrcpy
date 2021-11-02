@@ -137,6 +137,24 @@ export class AdbUtils {
         });
     }
 
+    public static async pipeLogToStream(serial: string, stream: Multiplexer): Promise<void> {
+        const client = AdbExtended.createClient();
+        const transfer = await client.log(serial, stream);
+        transfer.on('data', (data) => {
+            stream.send(Buffer.concat([Buffer.from(Protocol.DATA, 'ascii'), data]));
+        });
+        return new Promise((resolve, reject) => {
+            transfer.on('end', function () {
+                stream.send(Buffer.from(Protocol.DONE, 'ascii'));
+                stream.close();
+                resolve();
+            });
+            transfer.on('error', (e) => {
+                reject(e);
+            });
+        });
+    }
+
     public static async forward(serial: string, remote: string): Promise<number> {
         const client = AdbExtended.createClient();
         const forwards = await client.listForwards(serial);
