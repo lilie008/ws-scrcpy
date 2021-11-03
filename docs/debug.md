@@ -14,6 +14,12 @@
 2. `cd dist`
 3. `node --inspect-brk ./index.js`
 
+url: `chrome://inspect/#devices`
+
+cmd: `set DEBUG=*,-not_this`
+
+powershell : `$env:DEBUG = "*,-not_this"`
+
 __HINT__: you might want to set `DEBUG` environment variable (see [debug](https://github.com/visionmedia/debug)):
 > DEBUG=* node  --inspect-brk ./index.js
 
