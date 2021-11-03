@@ -1,4 +1,4 @@
-import '../../../vendor/Genymobile/scrcpy/scrcpy-server.jar';
+import '../../../vendor/Genymobile/scrcpy-server.jar';
 import '../../../vendor/Genymobile/scrcpy/LICENSE';
 
 import { Device } from './Device';
